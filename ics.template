@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ics-generator.herokuapp.com
+<% if(name) { %>X-WR-CALNAME:<%= name %><% } %>
+X-WR-TIMEZONE:<%= timezone %>
+BEGIN:VEVENT
+DTSTAMP:<%= now %>
+UID:<%= uid %>
+DTSTART;TZID=<%= timezone %>:<%= startDate %>
+DTEND;TZID=<%= timezone %>:<%= endDate %>
+SUMMARY:<%= summary %>
+DESCRIPTION:<%= description %>
+END:VEVENT
+END:VCALENDAR
