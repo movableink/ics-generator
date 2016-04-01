@@ -12,6 +12,7 @@ http.createServer(function(req, res) {
   var params = url.parse(req.url, true).query;
 
   var options = {
+    host: host,
     timezone: params.tz,
     summary: params.summary,
     description: params.description,
