@@ -27,7 +27,7 @@ http.createServer(function(req, res) {
 
   res.writeHead(200, {'Content-Type': 'text/calendar'});
   res.end(output);
-}).listen(process.env['PORT']);
+}).listen(port);
 
 console.log("Listening on port " + port + ", host " + host);
 
