@@ -5,10 +5,14 @@ var underscore = require('underscore');
 
 var template = underscore.template(fs.readFileSync('./ics.template').toString());
 
+var port = process.env['PORT'] || 7033;
+var host = process.env['HOST'] || 'ics.movableink-dmz.com';
+
 http.createServer(function(req, res) {
   var params = url.parse(req.url, true).query;
 
   var options = {
+    host: host,
     timezone: params.tz,
     summary: params.summary,
     description: params.description,
@@ -17,16 +21,16 @@ http.createServer(function(req, res) {
 
   options.startDate = formatDate(new Date(params.start));
   options.endDate = params.end ? formatDate(new Date(params.end)) : options.startDate;
-  options.uid = (new Date()).getTime() + "@ics-generator.herokuapp.com";
+  options.uid = (new Date()).getTime() + "@" + host;
   options.now = formatDate(new Date());
 
   var output = template(options);
 
   res.writeHead(200, {'Content-Type': 'text/calendar'});
   res.end(output);
-}).listen(process.env['PORT']);
+}).listen(port);
 
-console.log("Listening on port " + process.env['PORT']);
+console.log("Listening on port " + port + ", host " + host);
 
 function formatDate(d) {
   return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate()) + "T" + pad2(d.getHours()) + pad2(d.getMinutes()) + pad2(d.getSeconds());
