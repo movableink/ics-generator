@@ -10,5 +10,6 @@ DTSTART;TZID=<%= timezone %>:<%= startDate %>
 DTEND;TZID=<%= timezone %>:<%= endDate %>
 SUMMARY:<%= summary %>
 DESCRIPTION:<%= description %>
+LOCATION:<%= location %>
 END:VEVENT
 END:VCALENDAR
