@@ -16,6 +16,7 @@ http.createServer(function(req, res) {
     timezone: params.tz,
     summary: params.summary,
     description: params.description,
+    location: params.location,
     name: params.name
   };
 
