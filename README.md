@@ -31,7 +31,7 @@ Example URL
 -----------
 
     http://localhost:7033/calendar.ics?tz=America/New_York&start=2014/08/28%2003:00:00&end=2014/08/28%2005:30:00&summary=my%20event&description=this%20is%20an%20event.&location=Movable%20Ink
-
+ 
 License
 -------
 

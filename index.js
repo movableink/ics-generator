@@ -19,7 +19,7 @@ http.createServer(function(req, res) {
     location: params.location,
     name: params.name
   };
-
+ 
   options.startDate = formatDate(new Date(params.start));
   options.endDate = params.end ? formatDate(new Date(params.end)) : options.startDate;
   options.uid = (new Date()).getTime() + "@" + host;
