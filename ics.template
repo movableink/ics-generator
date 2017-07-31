@@ -16,5 +16,6 @@ DTEND;TZID=<%= timezone %>:<%= endDate %>
 SUMMARY:<%= summary %>
 DESCRIPTION:<%= description %>
 LOCATION:<%= location %>
+<% if(rrule) { %>RRULE:<%= rrule %><% } %>
 END:VEVENT
 END:VCALENDAR

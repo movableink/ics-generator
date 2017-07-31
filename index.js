@@ -18,7 +18,8 @@ http.createServer(function(req, res) {
     description: params.description,
     location: params.location,
     name: params.name,
-    allDay: params.all_day || false
+    allDay: params.all_day,
+    rrule: params.rrule
   };
 
   if (options.allDay) {
