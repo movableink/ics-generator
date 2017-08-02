@@ -26,6 +26,8 @@ You can load the calendar at any route, for instance /calendar.ics.  The followi
   * _description_: A longer description of the event.
   * _location_: Add Location (string)
   * _name_: Name of the calendar to add the event to.  Leave blank to let the user choose.
+  * _rrule_: Logic for Recurrence Rule. If not passed, the event will not recur.
+  * _all_day_: If this parameter is passed, the event returned will have its "All Day" checkbox filled in.
 
 Example URL
 -----------
