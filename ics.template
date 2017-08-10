@@ -6,10 +6,16 @@ X-WR-TIMEZONE:<%= timezone %>
 BEGIN:VEVENT
 DTSTAMP:<%= now %>
 UID:<%= uid %>
+<% if (allDay) { %>
+DTSTART;VALUE=DATE:<%= startDate %>
+DTEND;VALUE=DATE:<%= endDate %>
+<% } else { %>
 DTSTART;TZID=<%= timezone %>:<%= startDate %>
 DTEND;TZID=<%= timezone %>:<%= endDate %>
+<% } %>
 SUMMARY:<%= summary %>
 DESCRIPTION:<%= description %>
 LOCATION:<%= location %>
+<% if(rrule) { %>RRULE:<%= rrule %><% } %>
 END:VEVENT
 END:VCALENDAR
