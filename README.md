@@ -34,14 +34,14 @@ Example URL
 
     http://localhost:7033/calendar.ics?tz=America/New_York&start=2014/08/28%2003:00:00&end=2014/08/28%2005:30:00&summary=my%20event&description=this%20is%20an%20event.&location=Movable%20Ink
 
-Example Reoccurring URL
+Example Reccurring URL
 -----------
 
     http://localhost:7033/calendar.ics?tz=America/New_York&start=2017/08/19%2003:00:00&end=2017/08/19%2005:30:00&summary=my%20event&description=this%20is%20an%20event.&location=Movable%20Ink&rrule=FREQ=MONTHLY;BYMONTHDAY=17
 
 Example All Day URL
 -----------
-  
+
     http://localhost:7033/calendar.ics?tz=America/New_York&start=2014/08/28%2003:00:00&end=2014/08/28%2005:30:00&summary=my%20event&description=this%20is%20an%20event.&location=Movable%20Ink&all_day=1
 
 License
