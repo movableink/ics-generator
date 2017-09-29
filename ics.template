@@ -10,8 +10,8 @@ UID:<%= uid %>
 DTSTART;VALUE=DATE:<%= startDate %>
 DTEND;VALUE=DATE:<%= endDate %>
 <% } else { %>
-DTSTART;TZID=<%= timezone %>:<%= startDate %>
-DTEND;TZID=<%= timezone %>:<%= endDate %>
+DTSTART;TZID=Etc/GMT:<%= startDate %>
+DTEND;TZID=Etc/GMT:<%= endDate %>
 <% } %>
 SUMMARY:<%= summary %>
 DESCRIPTION:<%= description %>
