@@ -37,6 +37,7 @@ http.createServer(function(req, res) {
 
   options.uid = (new Date()).getTime() + "@" + host;
   options.now = formatDate(new Date());
+  options.fileName = sanitizeFileName(options.fileName);
 
   var output = template(options);
 
@@ -56,6 +57,15 @@ function formatDatetime(d) {
 function formatDate(d) {
   return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate());
 };
+
+function sanitizeFileName(n) {
+  let result = '';
+  const isValidChar = new RegExp(/[A-Za-z0-9_\-\.]/);
+  for (let char of n) {
+    if (isValidChar.test(char)) { result += char }
+  }
+  return result;
+}
 
 function pad2(i) {
   if(i < 10) {
