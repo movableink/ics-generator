@@ -19,8 +19,13 @@ http.createServer(function(req, res) {
     location: params.location,
     name: params.name,
     allDay: params.all_day,
+    fileName: params.file_name,
     rrule: params.rrule
   };
+
+  if (!options.fileName || !options.fileName.length) {
+    options.fileName = 'Event';
+  }
 
   if (options.allDay) {
     options.startDate = formatDate(new Date(params.start));
@@ -34,8 +39,12 @@ http.createServer(function(req, res) {
   options.now = formatDate(new Date());
 
   var output = template(options);
+  console.log('its working');
 
-  res.writeHead(200, {'Content-Type': 'text/calendar'});
+  res.writeHead(200, {
+    'Content-Type': 'text/calendar',
+    'Content-Disposition': `attachment; filename="${options.fileName}.ics"`
+  });
   res.end(output);
 }).listen(port);
 
