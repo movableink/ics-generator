@@ -39,7 +39,6 @@ http.createServer(function(req, res) {
   options.now = formatDate(new Date());
 
   var output = template(options);
-  console.log('its working');
 
   res.writeHead(200, {
     'Content-Type': 'text/calendar',
