@@ -59,12 +59,7 @@ function formatDate(d) {
 };
 
 function sanitizeFileName(filename) {
-  let result = '';
-  const isValidChar = new RegExp(/[A-Za-z0-9_\-\.]/);
-  for (let char of filename) {
-    if (isValidChar.test(char)) { result += char }
-  }
-  return result;
+  return filename.replace(/[^A-Za-z0-9_\-\.]/, ()=>'');
 }
 
 function pad2(i) {
