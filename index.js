@@ -19,8 +19,13 @@ http.createServer(function(req, res) {
     location: params.location,
     name: params.name,
     allDay: params.all_day,
+    fileName: params.file_name,
     rrule: params.rrule
   };
+
+  if (!options.fileName || !options.fileName.length) {
+    options.fileName = 'Event';
+  }
 
   if (options.allDay) {
     options.startDate = formatDate(new Date(params.start));
@@ -32,10 +37,14 @@ http.createServer(function(req, res) {
 
   options.uid = (new Date()).getTime() + "@" + host;
   options.now = formatDate(new Date());
+  options.fileName = sanitizeFileName(options.fileName);
 
   var output = template(options);
 
-  res.writeHead(200, {'Content-Type': 'text/calendar'});
+  res.writeHead(200, {
+    'Content-Type': 'text/calendar',
+    'Content-Disposition': `attachment; filename="${options.fileName}.ics"`
+  });
   res.end(output);
 }).listen(port);
 
@@ -48,6 +57,10 @@ function formatDatetime(d) {
 function formatDate(d) {
   return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate());
 };
+
+function sanitizeFileName(filename) {
+  return filename.replace(/[^A-Za-z0-9_\-\.]/, ()=>'');
+}
 
 function pad2(i) {
   if(i < 10) {
