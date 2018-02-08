@@ -58,10 +58,10 @@ function formatDate(d) {
   return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate());
 };
 
-function sanitizeFileName(n) {
+function sanitizeFileName(filename) {
   let result = '';
   const isValidChar = new RegExp(/[A-Za-z0-9_\-\.]/);
-  for (let char of n) {
+  for (let char of filename) {
     if (isValidChar.test(char)) { result += char }
   }
   return result;
