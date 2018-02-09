@@ -23,10 +23,6 @@ http.createServer(function(req, res) {
     rrule: params.rrule
   };
 
-  if (!options.fileName || !options.fileName.length) {
-    options.fileName = 'Event';
-  }
-
   if (options.allDay) {
     options.startDate = formatDate(new Date(params.start));
     options.endDate = params.end ? formatDate(new Date(params.end)) : options.startDate;
@@ -38,6 +34,10 @@ http.createServer(function(req, res) {
   options.uid = (new Date()).getTime() + "@" + host;
   options.now = formatDate(new Date());
   options.fileName = sanitizeFileName(options.fileName);
+
+  if (!options.fileName || !options.fileName.length) {
+    options.fileName = 'Event';
+  }
 
   var output = template(options);
 
