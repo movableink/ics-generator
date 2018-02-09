@@ -33,9 +33,8 @@ http.createServer(function(req, res) {
 
   options.uid = (new Date()).getTime() + "@" + host;
   options.now = formatDate(new Date());
-  options.fileName = sanitizeFileName(options.fileName);
-
-  if (!options.fileName || !options.fileName.length) {
+  options.fileName = sanitizeFileName(options.fileName || '');
+  if (!options.fileName.length) {
     options.fileName = 'Event';
   }
 
