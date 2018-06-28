@@ -15,7 +15,7 @@ http.createServer(function(req, res) {
     host: host,
     timezone: params.tz,
     summary: params.summary,
-    description: params.description,
+    description: params.description.replace(/\n/gi, "\\n"),
     location: params.location,
     name: params.name,
     allDay: params.all_day,
