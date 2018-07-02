@@ -11,11 +11,13 @@ var host = process.env['HOST'] || 'ics.movableink-dmz.com';
 http.createServer(function(req, res) {
   var params = url.parse(req.url, true).query;
 
+  var descriptionWithLineBreaks = params.description ? params.description.replace(/\n/gi, "\\n") : '';
+
   var options = {
     host: host,
     timezone: params.tz,
     summary: params.summary,
-    description: params.description.replace(/\n/gi, "\\n"),
+    description: descriptionWithLineBreaks,
     location: params.location,
     name: params.name,
     allDay: params.all_day,
